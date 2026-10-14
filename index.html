@@ -53,8 +53,8 @@ section{padding:100px 50px}
 .card ul{list-style:none;color:var(--mut)}
 .card ul li{margin-bottom:10px}
 .card ul li::before{content:'▸ ';color:var(--acc)}
-.photo-strip{display:grid;grid-template-columns:2fr 1fr 1fr;gap:15px;max-width:1200px;margin:0 auto 30px;height:340px}
-.photo-strip img{width:100%;height:100%;object-fit:cover;border-radius:12px;border:1px solid var(--brd);transition:.4s;cursor:pointer}
+.photo-strip{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:340px;gap:15px;max-width:1200px;margin:0 auto 30px;height:auto}
+.photo-strip img{width:100%;height:100%;object-fit:cover;border-radius:12px;border:1px solid var(--brd);transition:.4s;cursor:pointer;display:block}
 .photo-strip img:hover{transform:scale(1.03);border-color:var(--acc)}
 .photo-wide{max-width:1200px;margin:0 auto;border-radius:14px;overflow:hidden;border:1px solid var(--brd)}
 .photo-wide img{width:100%;display:block;cursor:pointer}
@@ -146,9 +146,9 @@ section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 sp
 </section>
 
 <section id="gallery" style="background:var(--bg2)">
-           <h2 class="st reveal">Загляни внутрь</h2>
-    <div class="photo-strip reveal">
-        <img src="photo4.webp" alt="Вход в клуб" onclick="openLb('photo4.webp')">
+           <h2 class="st">Загляни внутрь</h2>
+    <div class="photo-strip">
+        <img src="photo4.webp" alt="Вход в клуб" loading="lazy" onclick="openLb('photo4.webp')">
     </div>
 
     <h2 class="st reveal">Фотогалерея</h2>
@@ -160,15 +160,15 @@ section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 sp
         <button class="fbtn" data-filter="ps5">PlayStation 5</button>
     </div>
     <div class="gal" id="gal">
-        <div class="gitem" data-cat="vip"><img src="photo13.jpeg" alt="VIP ZONE 51"><div class="ov">🔍</div></div>
-        <div class="gitem" data-cat="pc"><img src="photo14.jpeg" alt="Игровая зона"><div class="ov">🔍</div></div>
-        <div class="gitem" data-cat="pc"><img src="photo8.jpeg" alt="VIP-места"><div class="ov">🔍</div></div>
-        <div class="gitem" data-cat="pc"><img src="photo9.jpeg" alt="ПК крупным планом"><div class="ov">🔍</div></div>
-        <div class="gitem" data-cat="lounge"><img src="photo1.webp" alt="Вход в клуб"><div class="ov">🔍</div></div>
-        <div class="gitem" data-cat="lounge"><img src="photo2.webp" alt="Стена с артами"><div class="ov">🔍</div></div>
-        <div class="gitem" data-cat="pc"><img src="photo5.webp" alt="Клуб"><div class="ov">🔍</div></div>
-        <div class="gitem" data-cat="pc"><img src="photo7.jpeg" alt="ПК"><div class="ov">🔍</div></div>
-        <div class="gitem" data-cat="pc"><img src="photo6.webp" alt="Игровая зона"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="vip"><img src="photo13.jpeg" alt="VIP ZONE 51" loading="lazy" ><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="pc"><img src="photo14.jpeg" alt="Игровая зона"loading="lazy"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="pc"><img src="photo8.jpeg" alt="VIP-места"loading="lazy"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="pc"><img src="photo9.jpeg" alt="ПК крупным планом"loading="lazy"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="lounge"><img src="photo1.webp" alt="Вход в клуб"loading="lazy"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="lounge"><img src="photo2.webp" alt="Стена с артами"loading="lazy"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="pc"><img src="photo5.webp" alt="Клуб"loading="lazy"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="pc"><img src="photo7.jpeg" alt="ПК"loading="lazy"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="pc"><img src="photo6.webp" alt="Игровая зона"loading="lazy"><div class="ov">🔍</div></div>
     </div>
 </section>
 
@@ -273,9 +273,9 @@ footer p:last-child{margin-top:8px;font-size:12px;color:#666}
 .lb-nav:hover{background:var(--acc);border-color:var(--acc)}
 .lb-p{left:30px}.lb-n{right:30px}
 
-@media(max-width:900px){.gal{columns:2}}
+@media(max-width:900px){.gal{grid-template-columns:repeat(2,1fr)}
 @media(max-width:768px){.lounge-grid{grid-template-columns:1fr}}
-@media(max-width:600px){.gal{columns:1}.contacts{flex-direction:column}.map-wrap iframe{height:300px}}
+@media(max-width:600px){.gal{grid-template-columns:1fr}
 </style>
 
 <div class="lb" id="lb">
