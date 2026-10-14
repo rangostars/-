@@ -12,10 +12,10 @@ body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',Roboto,Arial,s
 header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:10px 50px;background:rgba(10,10,10,.85);backdrop-filter:blur(14px);z-index:1000;border-bottom:2px solid var(--acc);transition:.4s}
 header.scrolled{padding:6px 50px;background:rgba(8,8,8,.97)}
 .logo{display:flex;align-items:center;gap:14px;text-decoration:none}
-.logo img{height:60px;width:60px;object-fit:contain;transition:.3s;filter:drop-shadow(0 0 12px var(--acc-glow))}
-header.scrolled .logo img{height:46px;width:46px}
-.logo span{font-size:24px;font-weight:900;letter-spacing:3px;color:#fff;text-transform:uppercase}
-nav a{color:var(--txt);text-decoration:none;margin-left:22px;font-weight:700;font-size:14px;text-transform:uppercase;transition:.3s;opacity:.85;position:relative;padding:6px 0}
+.logo img{height:70px;width:70px;object-fit:contain;transition:.3s;filter:drop-shadow(0 0 12px var(--acc-glow))}
+header.scrolled .logo img{height:52px;width:52px}
+.logo span{font-size:26px;font-weight:900;letter-spacing:3px;color:#fff;text-transform:uppercase}
+nav a{color:var(--txt);text-decoration:none;margin-left:26px;font-weight:700;font-size:20px;text-transform:uppercase;transition:.3s;opacity:.85;position:relative;padding:6px 0}
 nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--acc2);transition:.3s}
 nav a:hover{color:var(--acc2);opacity:1}
 nav a:hover::after{width:100%}
@@ -26,7 +26,7 @@ nav a:hover::after{width:100%}
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 60px;overflow:hidden}
 .hero video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;transform:translate(-50%,-50%);object-fit:cover;z-index:-2}
 .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(10,10,10,.72),rgba(10,10,10,.93));z-index:-1}
-.hero-logo{width:190px;height:190px;object-fit:contain;margin-bottom:15px;filter:drop-shadow(0 0 45px var(--acc-glow));animation:pulse 3s ease-in-out infinite}
+.hero-logo{width:180px;height:180px;object-fit:contain;margin-bottom:15px;filter:drop-shadow(0 0 45px var(--acc-glow));animation:pulse 3s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 .hero h1{font-size:52px;font-weight:900;text-transform:uppercase;line-height:1.1;letter-spacing:2px}
 .hero h1 span{background:linear-gradient(135deg,var(--acc),var(--acc3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:block;font-size:64px}
@@ -38,6 +38,12 @@ nav a:hover::after{width:100%}
 section{padding:100px 50px}
 .st{font-size:38px;text-transform:uppercase;margin-bottom:55px;text-align:center;font-weight:900;letter-spacing:2px}
 .st::after{content:'';display:block;width:80px;height:4px;background:linear-gradient(90deg,var(--acc),var(--acc3));margin:18px auto 0}
+.hw-row{display:flex;gap:20px;max-width:1400px;margin:0 auto;flex-wrap:wrap}
+.hw-row .card{flex:1;min-width:220px}
+.hw-info{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1200px;margin:50px auto 0}
+.hw-stat{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:25px;text-align:center}
+.hw-stat b{display:block;font-size:34px;color:var(--acc2);font-weight:900}
+.hw-stat span{color:var(--mut);font-size:13px;text-transform:uppercase}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:30px;max-width:1200px;margin:0 auto}
 .card{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:32px;transition:.4s;position:relative;overflow:hidden}
 .card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--acc),var(--acc3));transform:scaleX(0);transform-origin:left;transition:.4s}
@@ -55,7 +61,7 @@ section{padding:100px 50px}
 .reveal{opacity:0;transform:translateY(60px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
 .reveal.visible{opacity:1;transform:translate(0,0)}
 .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
-@media(max-width:768px){.photo-strip{grid-template-columns:1fr;height:auto}.photo-strip img{height:220px}header{padding:10px 20px;flex-direction:column}
+@media(max-width:768px){.photo-strip{grid-template-columns:1fr;height:auto}.photo-strip img{height:220px}header{padding:10px 20px;flex-direction:column}.hw-info{grid-template-columns:1fr 1fr}nav a{font-size:14px;margin-left:12px}
 section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 span{font-size:38px}.hero-logo{width:130px;height:130px}}
 </style>
 </head>
@@ -93,43 +99,49 @@ section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 sp
 
 <section id="hardware">
     <h2 class="st reveal">Наше Железо</h2>
-    <div class="grid">
-        <div class="card reveal d1">
+    <div class="hw-row reveal">
+        <div class="card">
             <h3>Игровые ПК</h3>
             <ul>
-                <li>Видеокарты RTX серии</li>
-                <li>Процессоры Intel Core i7 / i9</li>
-                <li>Оперативная память 32GB+</li>
-                <li>SSD для мгновенной загрузки</li>
+                <li>RTX серии</li>
+                <li>Intel i7 / i9</li>
+                <li>32GB RAM</li>
+                <li>NVMe SSD</li>
             </ul>
         </div>
-        <div class="card reveal d2">
+        <div class="card">
             <h3>Мониторы</h3>
             <ul>
-                <li>Частота 240 Гц и 360 Гц</li>
+                <li>240 / 360 Гц</li>
                 <li>Отклик 1ms</li>
-                <li>Разрешение Full HD / 2K</li>
-                <li>Идеально для CS2, Dota 2, Valorant</li>
+                <li>Full HD / 2K</li>
+                <li>CS2, Dota 2, Valorant</li>
             </ul>
         </div>
-        <div class="card reveal d3">
+        <div class="card">
             <h3>Консоли PS5</h3>
             <ul>
-                <li>PlayStation 5 с DualSense</li>
-                <li>Эксклюзивы Sony</li>
-                <li>Большие 4K телевизоры</li>
-                <li>Удобные диваны и кресла</li>
+                <li>PlayStation 5</li>
+                <li>DualSense</li>
+                <li>4K телевизоры</li>
+                <li>Удобные диваны</li>
             </ul>
         </div>
-        <div class="card reveal d4">
+        <div class="card">
             <h3>Периферия</h3>
             <ul>
                 <li>Механические клавиатуры</li>
-                <li>Игровые мыши Logitech / Razer</li>
-                <li>Профессиональные гарнитуры</li>
-                <li>Кресла для долгих сессий</li>
+                <li>Logitech / Razer</li>
+                <li>Гарнитуры</li>
+                <li>Игровые кресла</li>
             </ul>
         </div>
+    </div>
+    <div class="hw-info reveal d1">
+        <div class="hw-stat"><b>30+</b><span>игровых мест</span></div>
+        <div class="hw-stat"><b>360</b><span>Гц мониторы</span></div>
+        <div class="hw-stat"><b>24/7</b><span>работаем</span></div>
+        <div class="hw-stat"><b>1000</b><span>Мбит/с интернет</span></div>
     </div>
 </section>
 
@@ -169,24 +181,16 @@ section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 sp
     <h2 class="st reveal">Наши Цены</h2>
     <div class="price-wrap reveal">
         <div class="price-tabs">
-            <div class="ptab active" data-tab="hour">Почасовая</div>
-            <div class="ptab" data-tab="night">Ночь / Пакеты</div>
+            <div class="ptab active" data-tab="floor1">1 этаж</div>
+            <div class="ptab" data-tab="floor2">2 этаж</div>
         </div>
-        <table class="ptable" id="tab-hour">
-            <tr><th>Зона</th><th>Конфигурация</th><th>Цена</th></tr>
-            <tr><td>Стандарт</td><td>RTX / 240 Гц</td><td>150 ₽/ч</td></tr>
-            <tr><td class="hit">VIP</td><td>RTX / 360 Гц</td><td>250 ₽/ч</td></tr>
-            <tr><td>PS5</td><td>4K телевизор</td><td>350 ₽/ч</td></tr>
-            <tr><td>Лаунж</td><td>Мягкая зона</td><td>100 ₽/ч</td></tr>
-        </table>
-        <table class="ptable" id="tab-night" style="display:none">
-            <tr><th>Пакет</th><th>Описание</th><th>Цена</th></tr>
-            <tr><td class="hit">Ночь</td><td>с 23:00 до 08:00</td><td>700 ₽</td></tr>
-            <tr><td>3 часа</td><td>любая зона</td><td>400 ₽</td></tr>
-            <tr><td>5 часов</td><td>любая зона</td><td>650 ₽</td></tr>
-            <tr><td>День</td><td>с 08:00 до 23:00</td><td>1100 ₽</td></tr>
-        </table>
-        <div class="price-note">* Цены указаны за одно игровое место. Уточняйте актуальные акции у администратора.</div>
+        <div id="tab-floor1">
+            <img src="price1.jpg" alt="Прайс 1 этаж" style="width:100%;display:block;cursor:pointer" onclick="openLb('price1.jpg')">
+        </div>
+        <div id="tab-floor2" style="display:none">
+            <img src="price2.jpg" alt="Прайс 2 этаж" style="width:100%;display:block;cursor:pointer" onclick="openLb('price2.jpg')">
+        </div>
+        <div class="price-note">* Актуальные цены — в прайсе выше. Уточняйте акции у администратора.</div>
     </div>
 </section>
 
@@ -244,14 +248,6 @@ section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 sp
 .ptab{flex:1;padding:18px;text-align:center;cursor:pointer;font-weight:800;text-transform:uppercase;font-size:14px;color:var(--mut);transition:.3s;border-bottom:3px solid transparent}
 .ptab:hover{color:var(--acc2)}
 .ptab.active{color:#fff;background:var(--card);border-bottom-color:var(--acc)}
-.ptable{width:100%;border-collapse:collapse}
-.ptable th{background:#101010;padding:16px;text-align:left;font-size:13px;text-transform:uppercase;color:var(--mut);font-weight:800;border-bottom:1px solid var(--brd)}
-.ptable td{padding:16px;border-bottom:1px solid var(--brd);font-size:16px}
-.ptable tr:last-child td{border-bottom:none}
-.ptable tr:hover td{background:rgba(196,58,10,.06)}
-.ptable td:last-child{text-align:right;font-weight:900;color:var(--acc2);font-size:18px}
-.ptable td.hit{position:relative}
-.ptable td.hit::before{content:'ХИТ';position:absolute;left:14px;top:-1px;background:var(--acc);color:#fff;font-size:10px;padding:2px 8px;border-radius:0 0 6px 6px;font-weight:800;letter-spacing:1px}
 .price-note{text-align:center;padding:18px;background:#101010;color:var(--mut);font-size:13px}
 
 .lounge-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1200px;margin:0 auto;align-items:center}
@@ -305,14 +301,14 @@ const obs=new IntersectionObserver((es)=>{
 },{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Табы прайса
+// Табы прайса (1/2 этаж)
 document.querySelectorAll('.ptab').forEach(t=>{
     t.onclick=()=>{
         document.querySelectorAll('.ptab').forEach(x=>x.classList.remove('active'));
         t.classList.add('active');
         const tab=t.dataset.tab;
-        document.getElementById('tab-hour').style.display=tab==='hour'?'table':'none';
-        document.getElementById('tab-night').style.display=tab==='night'?'table':'none';
+        document.getElementById('tab-floor1').style.display=tab==='floor1'?'block':'none';
+        document.getElementById('tab-floor2').style.display=tab==='floor2'?'block':'none';
     }
 });
 
@@ -331,7 +327,7 @@ document.querySelectorAll('.fbtn').forEach(b=>{
 // Лайтбокс
 let lbList=[],lbIdx=0;
 function openLb(src){
-    lbList=[...document.querySelectorAll('.gal .gitem img, .photo-strip img, .photo-wide img')].map(i=>i.src);
+    lbList=[...document.querySelectorAll('.gal .gitem img, .photo-strip img, .photo-wide img, #prices img')].map(i=>i.src);
     lbIdx=lbList.indexOf(new URL(src,location.href).href);
     if(lbIdx<0)lbIdx=0;
     showLb();
@@ -346,11 +342,11 @@ document.addEventListener('keydown',e=>{
     if(e.key==='ArrowLeft')lbMove(-1);
     if(e.key==='ArrowRight')lbMove(1);
 });
-document.querySelectorAll('.gal .gitem').forEach((it,i)=>{
+document.querySelectorAll('.gal .gitem').forEach((it)=>{
     it.onclick=()=>{
-        const imgs=[...document.querySelectorAll('.gal .gitem')].filter(x=>x.style.display!=='none');
-        lbList=imgs.map(x=>x.querySelector('img').src);
-        lbIdx=imgs.indexOf(it);
+        const vis=[...document.querySelectorAll('.gal .gitem')].filter(x=>x.style.display!=='none');
+        lbList=vis.map(x=>x.querySelector('img').src);
+        lbIdx=vis.indexOf(it);
         showLb();
     }
 });
