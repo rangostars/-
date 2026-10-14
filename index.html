@@ -20,8 +20,8 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',Roboto,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
 header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px 50px;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);z-index:1000;border-bottom:2px solid var(--acc)}
-.logo{font-size:24px;font-weight:900;letter-spacing:2px}
-.logo span{color:var(--acc);font-size:32px;font-style:italic}
+.logo{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:900;letter-spacing:2px;color:#fff}
+.logo img{height:50px;width:50px;object-fit:contain}
 nav a{color:var(--txt);text-decoration:none;margin-left:25px;font-weight:600;font-size:14px;text-transform:uppercase;transition:.3s}
 nav a:hover{color:var(--acc)}
 .btn{background:var(--acc);color:#fff;padding:12px 25px;border:none;border-radius:5px;font-weight:700;cursor:pointer;text-transform:uppercase;transition:.3s;text-decoration:none;display:inline-block;font-size:14px}
@@ -86,7 +86,7 @@ footer{text-align:center;padding:30px;background:#fff;color:var(--mut);font-size
 </head>
 <body>
 <header>
-    <div class="logo"><span>X</span> КИБЕР ДОМ</div>
+    <div class="logo"><img src="лого.png" alt="КИБЕР ДОМ"> КИБЕР ДОМ</div>
     <nav>
         <a href="#hardware">Железо</a>
         <a href="#gallery">Галерея</a>
