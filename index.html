@@ -1,35 +1,80 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>КИБЕР ДОМ | Компьютерный клуб в Петрозаводске</title>
-    <style>
-        :root {
-            --bg-dark: #0a0a0a;
-            --bg-card: #151515;
-            --accent: #ff4500;
-            --accent-glow: #ff4500aa;
-            --text-main: #ffffff;
-            --text-muted: #aaaaaa;
-            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        <!-- НАВИГАЦИЯ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>КИБЕР ДОМ | Компьютерный клуб</title>
+<style>
+:root{--bg:#f5f5f7;--card:#fff;--acc:#ff4500;--txt:#1a1a1a;--mut:#666;--brd:#e0e0e0}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',Roboto,Arial,sans-serif;line-height:1.6}
+header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:15px 50px;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);z-index:1000;border-bottom:2px solid var(--acc);box-shadow:0 2px 15px rgba(0,0,0,.05)}
+.logo{font-size:24px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--acc);font-size:32px;font-style:italic}
+nav a{color:var(--txt);text-decoration:none;margin-left:25px;font-weight:600;font-size:14px;text-transform:uppercase;transition:.3s}
+nav a:hover{color:var(--acc)}
+.btn{background:var(--acc);color:#fff;padding:12px 25px;border:none;border-radius:5px;font-weight:700;cursor:pointer;text-transform:uppercase;transition:.3s;text-decoration:none;display:inline-block;font-size:14px}
+.btn:hover{background:#e03e00;box-shadow:0 5px 20px #ff450055}
+.btn-o{background:transparent;border:2px solid var(--acc);color:var(--acc)}
+.btn-o:hover{background:var(--acc);color:#fff}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(rgba(255,255,255,.85),rgba(245,245,247,.95)),url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600') center/cover;padding:100px 20px 40px}
+.hero h1{font-size:56px;font-weight:900;text-transform:uppercase;line-height:1.1}
+.hero h1 span{color:var(--acc);display:block;font-size:66px}
+.hero p{font-size:20px;color:var(--mut);max-width:600px;margin:20px 0 30px}
+.hbtns{display:flex;gap:15px;flex-wrap:wrap;justify-content:center}
+.badges{display:flex;gap:20px;margin-top:40px;flex-wrap:wrap;justify-content:center}
+.badge{background:#fff;border:1px solid var(--brd);padding:10px 20px;border-radius:50px;font-size:14px;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+section{padding:100px 50px}
+.st{font-size:36px;text-transform:uppercase;margin-bottom:50px;text-align:center}
+.st::after{content:'';display:block;width:60px;height:4px;background:var(--acc);margin:15px auto 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:30px;max-width:1200px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--brd);border-radius:10px;padding:30px;transition:.3s;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(255,69,0,.12)}
+.card h3{font-size:22px;margin-bottom:15px;color:var(--acc)}
+.card ul{list-style:none;color:var(--mut)}
+.card ul li{margin-bottom:10px}
+.card ul li::before{content:'▸ ';color:var(--acc)}
+.filters{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.fbtn{background:#fff;color:var(--mut);border:1px solid var(--brd);padding:10px 22px;border-radius:50px;cursor:pointer;font-weight:600;font-size:13px;text-transform:uppercase;transition:.3s}
+.fbtn:hover{color:var(--acc);border-color:var(--acc)}
+.fbtn.active{background:var(--acc);color:#fff;border-color:var(--acc)}
+.gal{columns:3;column-gap:20px;max-width:1200px;margin:0 auto}
+.gitem{position:relative;break-inside:avoid;margin-bottom:20px;border-radius:10px;overflow:hidden;cursor:pointer;border:1px solid var(--brd);box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.gitem img{width:100%;display:block;transition:.5s}
+.gitem .ov{position:absolute;inset:0;background:rgba(255,69,0,.6);display:flex;align-items:center;justify-content:center;opacity:0;transition:.3s}
+.gitem:hover{box-shadow:0 15px 35px rgba(255,69,0,.25)}
+.gitem:hover img{transform:scale(1.08)}
+.gitem:hover .ov{opacity:1}
+.lb{position:fixed;inset:0;background:rgba(255,255,255,.97);display:none;align-items:center;justify-content:center;z-index:2000;padding:40px}
+.lb.active{display:flex}
+.lb img{max-width:90%;max-height:85vh;border-radius:10px;border:3px solid var(--acc);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.lb-close{position:absolute;top:25px;right:35px;background:none;border:none;font-size:32px;cursor:pointer}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:#fff;border:1px solid var(--brd);font-size:40px;width:60px;height:60px;border-radius:50%;cursor:pointer;box-shadow:0 5px 20px rgba(0,0,0,.1)}
+.lb-nav:hover{background:var(--acc);color:#fff}
+.lb-p{left:30px}.lb-n{right:30px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;max-width:1000px;margin:0 auto}
+.pcard{background:var(--card);border-radius:10px;padding:30px;text-align:center;border:1px solid var(--brd);box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.pcard.f{border-color:var(--acc);box-shadow:0 15px 40px rgba(255,69,0,.15)}
+.pcard h4{font-size:18px;text-transform:uppercase;color:var(--mut);margin-bottom:15px}
+.pcard .pr{font-size:42px;font-weight:900;color:var(--acc)}
+.pcard .pr small{font-size:16px;color:var(--mut);font-weight:400}
+.pcard p{font-size:14px;color:var(--mut);margin:10px 0 20px}
+.contacts{display:flex;flex-wrap:wrap;justify-content:center;gap:50px;max-width:1200px;margin:0 auto}
+.cinfo{flex:1;min-width:300px}
+.cinfo h3{font-size:28px;margin-bottom:20px}
+.citem{display:flex;align-items:center;gap:15px;margin-bottom:20px;font-size:18px}
+.citem i{color:var(--acc);font-size:24px;font-style:normal}
+.citem a{color:var(--txt);text-decoration:none}
+.citem a:hover{color:var(--acc)}
+.map{flex:1;min-width:300px;height:300px;background:var(--card);border-radius:10px;display:flex;align-items:center;justify-content:center;border:1px solid var(--brd);color:#999}
+footer{text-align:center;padding:30px;background:#fff;color:var(--mut);font-size:14px;border-top:1px solid var(--brd)}
+@media(max-width:900px){.gal{columns:2}}
+@media(max-width:768px){header{padding:15px 20px;flex-direction:column;gap:12px}nav a{margin:0 8px;font-size:12px}.hero h1{font-size:34px}.hero h1 span{font-size:40px}section{padding:60px 20px}.st{font-size:26px}}
+@media(max-width:600px){.gal{columns:1}.contacts{flex-direction:column}}
+</style>
+</head>
+<body>
 <header>
     <div class="logo"><span>X</span> КИБЕР ДОМ</div>
     <nav>
@@ -42,15 +87,14 @@
     <a href="tel:+79110545970" class="btn">Позвонить</a>
 </header>
 
-<!-- HERO -->
 <div class="hero">
     <h1>Твой идеальный <span>КИБЕР ДОМ</span></h1>
     <p>Компьютерный клуб в Петрозаводске. Топовое железо, 240/360 Гц мониторы, PS5 и уютная лаунж-зона. Работаем 24/7.</p>
-    <div class="hero-buttons">
+    <div class="hbtns">
         <a href="#prices" class="btn">Узнать цены</a>
-        <a href="#contacts" class="btn btn-outline">Как добраться</a>
+        <a href="#contacts" class="btn btn-o">Как добраться</a>
     </div>
-    <div class="hero-badges">
+    <div class="badges">
         <div class="badge">📍 Лыжная 10а</div>
         <div class="badge">💻 Топовые ПК</div>
         <div class="badge">🎮 PlayStation 5</div>
@@ -58,24 +102,23 @@
     </div>
 </div>
 
-<!-- ЖЕЛЕЗО -->
 <section id="hardware">
-    <h2 class="section-title">Наше Железо</h2>
-    <div class="hardware-grid">
+    <h2 class="st">Наше Железо</h2>
+    <div class="grid">
         <div class="card">
             <h3>Игровые ПК</h3>
             <ul>
-                <li>Мощные видеокарты RTX серии</li>
+                <li>Видеокарты RTX серии</li>
                 <li>Процессоры Intel Core i7 / i9</li>
                 <li>Оперативная память 32GB+</li>
-                <li>SSD накопители для мгновенной загрузки</li>
+                <li>SSD для мгновенной загрузки</li>
             </ul>
         </div>
         <div class="card">
             <h3>Мониторы</h3>
             <ul>
-                <li>Частота обновления 240 Гц и 360 Гц</li>
-                <li>Минимальное время отклика (1ms)</li>
+                <li>Частота 240 Гц и 360 Гц</li>
+                <li>Отклик 1ms</li>
                 <li>Разрешение Full HD / 2K</li>
                 <li>Идеально для CS2, Dota 2, Valorant</li>
             </ul>
@@ -83,8 +126,8 @@
         <div class="card">
             <h3>Консоли PS5</h3>
             <ul>
-                <li>PlayStation 5 с геймпадами DualSense</li>
-                <li>Эксклюзивные игры Sony</li>
+                <li>PlayStation 5 с DualSense</li>
+                <li>Эксклюзивы Sony</li>
                 <li>Большие 4K телевизоры</li>
                 <li>Удобные диваны и кресла</li>
             </ul>
@@ -93,244 +136,201 @@
             <h3>Периферия</h3>
             <ul>
                 <li>Механические клавиатуры</li>
-                <li>Игровые мыши (Logitech, Razer)</li>
+                <li>Игровые мыши Logitech / Razer</li>
                 <li>Профессиональные гарнитуры</li>
-                <li>Удобные кресла для долгих сессий</li>
+                <li>Кресла для долгих сессий</li>
             </ul>
         </div>
     </div>
 </section>
 
-<!-- ГАЛЕРЕЯ -->
-<section id="gallery" style="background: #0f0f0f;">
-    <h2 class="section-title">Фотогалерея</h2>
-    <div class="gallery-filters">
-        <button class="filter-btn active" data-filter="all">Все</button>
-        <button class="filter-btn" data-filter="pc">Игровые ПК</button>
-        <button class="filter-btn" data-filter="ps5">PlayStation 5</button>
-        <button class="filter-btn" data-filter="lounge">Лаунж</button>
-        <button class="filter-btn" data-filter="tournament">Турниры</button>
+<section id="gallery" style="background:#ececf0">
+    <h2 class="st">Фотогалерея</h2>
+    <div class="filters">
+        <button class="fbtn active" data-filter="all">Все</button>
+        <button class="fbtn" data-filter="pc">Игровые ПК</button>
+        <button class="fbtn" data-filter="ps5">PlayStation 5</button>
+        <button class="fbtn" data-filter="lounge">Лаунж</button>
+        <button class="fbtn" data-filter="tournament">Турниры</button>
     </div>
-    <div class="gallery-grid" id="galleryGrid">
-        <div class="gallery-item" data-category="pc">
-            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800" alt="Игровое место" loading="lazy">
-            <div class="overlay"><span>🔍</span></div>
-        </div>
-        <div class="gallery-item" data-category="ps5">
-            <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800" alt="PlayStation 5" loading="lazy">
-            <div class="overlay"><span>🔍</span></div>
-        </div>
-        <div class="gallery-item" data-category="lounge">
-            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800" alt="Лаунж-зона" loading="lazy">
-            <div class="overlay"><span>🔍</span></div>
-        </div>
-        <div class="gallery-item" data-category="pc">
-            <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800" alt="Игровой ПК" loading="lazy">
-            <div class="overlay"><span>🔍</span></div>
-        </div>
-        <div class="gallery-item" data-category="tournament">
-            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800" alt="Турнир" loading="lazy">
-            <div class="overlay"><span>🔍</span></div>
-        </div>
-        <div class="gallery-item" data-category="ps5">
-            <img src="https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=800" alt="Геймпад PS5" loading="lazy">
-            <div class="overlay"><span>🔍</span></div>
-        </div>
-        <div class="gallery-item" data-category="lounge">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800" alt="Зона отдыха" loading="lazy">
-            <div class="overlay"><span>🔍</span></div>
-        </div>
-        <div class="gallery-item" data-category="pc">
-            <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800" alt="Мониторы 240Гц" loading="lazy">
-            <div class="overlay"><span>🔍</span></div>
-        </div>
-        <div class="gallery-item" data-category="tournament">
-            <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=800" alt="Киберспорт" loading="lazy">
-            <div class="overlay"><span>🔍</span></div>
-        </div>
+    <div class="gal" id="gal">
+        <div class="gitem" data-cat="pc"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800" alt="Игровое место"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="ps5"><img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800" alt="PS5"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="lounge"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800" alt="Лаунж"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="pc"><img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800" alt="Игровой ПК"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="tournament"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800" alt="Турнир"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="ps5"><img src="https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=800" alt="Геймпад PS5"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="lounge"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800" alt="Зона отдыха"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="pc"><img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800" alt="Мониторы"><div class="ov">🔍</div></div>
+        <div class="gitem" data-cat="tournament"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=800" alt="Киберспорт"><div class="ov">🔍</div></div>
     </div>
 </section>
 
-<!-- ЦЕНЫ -->
 <section id="prices">
-    <h2 class="section-title">Наши Цены</h2>
-    <div class="price-grid">
-        <div class="price-card">
+    <h2 class="st">Наши Цены</h2>
+    <div class="pgrid">
+        <div class="pcard">
             <h4>Стандарт</h4>
-            <div class="price">150 <small>₽/час</small></div>
+            <div class="pr">150 <small>₽/час</small></div>
             <p>ПК стандартной конфигурации</p>
-            <a href="tel:+79110545970" class="btn btn-outline">Забронировать</a>
+            <a href="tel:+79110545970" class="btn btn-o">Забронировать</a>
         </div>
-        <div class="price-card featured">
+        <div class="pcard f">
             <h4>VIP Зона</h4>
-            <div class="price">250 <small>₽/час</small></div>
+            <div class="pr">250 <small>₽/час</small></div>
             <p>Топовое железо и 360 Гц монитор</p>
             <a href="tel:+79110545970" class="btn">Забронировать</a>
         </div>
-        <div class="price-card">
+        <div class="pcard">
             <h4>PlayStation 5</h4>
-            <div class="price">300 <small>₽/час</small></div>
-            <p>Большой экран 4K и 2 геймпада</p>
-            <a href="tel:+79110545970" class="btn btn-outline">Забронировать</a>
-        </div>
-    </div>
-    <p class="price-note">Ночные пакеты и скидки для студентов — уточняйте по телефону</p>
-</section>
-
-<!-- ЛАУНЖ -->
-<section id="lounge">
-    <h2 class="section-title">Лаунж-зона</h2>
-    <div class="lounge-wrap">
-        <p>Место, где можно отдохнуть между играми: мягкие диваны, большой ТВ, кофе и снеки. Идеально для компании друзей.</p>
-        <div class="lounge-features">
-            <div class="lounge-feature"><span>☕</span><p>Кофе и чай</p></div>
-            <div class="lounge-feature"><span>🍕</span><p>Снеки и пицца</p></div>
-            <div class="lounge-feature"><span>📺</span><p>Большой ТВ</p></div>
-            <div class="lounge-feature"><span>🛋️</span><p>Мягкие диваны</p></div>
+            <div class="pr">300 <small>₽/час</small></div>
+            <p>Экран 4K и 2 геймпада</p>
+            <a href="tel:+79110545970" class="btn btn-o">Забронировать</a>
         </div>
     </div>
 </section>
 
-<!-- КОНТАКТЫ -->
+<section id="lounge" style="background:#ececf0">
+    <h2 class="st">Лаунж-зона</h2>
+    <div style="max-width:800px;margin:0 auto;text-align:center;color:var(--mut)">
+        <p style="font-size:18px;margin-bottom:20px">Уютное место, где можно отдохнуть между матчами: кофе, снеки, настольные игры и мягкие диваны.</p>
+        <div style="display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-top:30px">
+            <div class="card" style="min-width:150px"><div style="font-size:30px">☕</div><p style="font-weight:bold;margin-top:10px">Кофе и снеки</p></div>
+            <div class="card" style="min-width:150px"><div style="font-size:30px">🛋️</div><p style="font-weight:bold;margin-top:10px">Мягкие диваны</p></div>
+            <div class="card" style="min-width:150px"><div style="font-size:30px">🎲</div><p style="font-weight:bold;margin-top:10px">Настолки</p></div>
+        </div>
+    </div>
+</section>
+
 <section id="contacts">
-    <h2 class="section-title">Контакты</h2>
+    <h2 class="st">Контакты</h2>
     <div class="contacts">
-        <div class="contact-info">
-            <h3>Приходите к нам!</h3>
-            <div class="contact-item"><i>📍</i> <span
-                    <div class="contact-info">
-                <h3>Приходите к нам!</h3>
-                <div class="contact-item">
-                    <i>📍</i>
-                    <span>г. Петрозаводск, ул. Лыжная 10а</span>
-                </div>
-                <div class="contact-item">
-                    <i>📞</i>
-                    <a href="tel:+79110545970">+7 (911) 054-59-70</a>
-                </div>
-                <div class="contact-item">
-                    <i>🕐</i>
-                    <span>Работаем круглосуточно, 24/7</span>
-                </div>
-                <div class="contact-item">
-                    <i>💬</i>
-                    <a href="https://t.me/kiberdom" target="_blank">Telegram: @kiberdom</a>
-                </div>
-            </div>
-            <div class="map-placeholder">
-                <span>🗺️ Здесь будет карта</span>
-            </div>
+        <div class="cinfo">
+            <h3>КИБЕР ДОМ</h3>
+            <div class="citem"><i>📍</i> г. Петрозаводск, ул. Лыжная, 10а</div>
+            <div class="citem"><i>📞</i> <a href="tel:+79110545970">+7 (911) 054-59-70</a></div>
+            <div class="citem"><i>⏰</i> Работаем круглосуточно, 24/7</div>
+            <div class="citem"><i>💬</i> <a href="https://vk.com" target="_blank">Мы во ВКонтакте</a></div>
         </div>
-    </section>
-
-    <!-- ФУТЕР -->
-    <footer>
-        <p>© 2026 КИБЕР ДОМ — Компьютерный клуб в Петрозаводске</p>
-        <p>Топовое железо • PS5 • Лаунж-зона • 24/7</p>
-    </footer>
-
-    <!-- ЛАЙТБОКС -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightboxClose">✕</button>
-        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
-        <img src="" alt="" class="lightbox-img" id="lightboxImg">
-        <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+        <div class="map">Здесь будет карта (Яндекс.Карты)</div>
     </div>
+</section>
 
-    <script>
-        /* ============================================================
-           ЛАЙТБОКС — открытие фото
-           ============================================================ */
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxClose = document.getElementById('lightboxClose');
-        const lightboxPrev = document.getElementById('lightboxPrev');
-        const lightboxNext = document.getElementById('lightboxNext');
+<div class="lb" id="lb">
+    <button class="lb-close" id="lbClose">✕</button>
+    <button class="lb-nav lb-p" id="lbPrev">‹</button>
+    <img id="lbImg" src="" alt="">
+    <button class="lb-nav lb-n" id="lbNext">›</button>
+</div>
 
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        let visibleItems = [];
-        let currentIndex = 0;
+<footer>
+    <p>© 2026 КИБЕР ДОМ — Компьютерный клуб в Петрозаводске</p>
+    <p>Лыжная 10а · +7 (911) 054-59-70 · Работаем 24/7</p>
+</footer>
+<script>
+// ===== ФИЛЬТР ГАЛЕРЕИ =====
+const fbtns = document.querySelectorAll('.fbtn');
+const gitems = document.querySelectorAll('.gitem');
 
-        function getVisibleItems() {
-            return Array.from(galleryItems).filter(
-                item => item.style.display !== 'none'
-            );
-        }
-
-        function openLightbox(index) {
-            visibleItems = getVisibleItems();
-            currentIndex = index;
-            lightboxImg.src = visibleItems[currentIndex]
-                .querySelector('img').src;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function showPrev() {
-            currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
-            lightboxImg.src = visibleItems[currentIndex].querySelector('img').src;
-        }
-
-        function showNext() {
-            currentIndex = (currentIndex + 1) % visibleItems.length;
-            lightboxImg.src = visibleItems[currentIndex].querySelector('img').src;
-        }
-
-        galleryItems.forEach(item => {
-            item.addEventListener('click', () => {
-                visibleItems = getVisibleItems();
-                const idx = visibleItems.indexOf(item);
-                if (idx !== -1) openLightbox(idx);
-            });
+fbtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        fbtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        gitems.forEach(item => {
+            const show = (f === 'all' || item.dataset.cat === f);
+            item.style.display = show ? 'block' : 'none';
         });
+    });
+});
 
-        lightboxClose.addEventListener('click', closeLightbox);
-        lightboxPrev.addEventListener('click', showPrev);
-        lightboxNext.addEventListener('click', showNext);
+// ===== ЛАЙТБОКС =====
+const lb = document.getElementById('lb');
+const lbImg = document.getElementById('lbImg');
+const lbClose = document.getElementById('lbClose');
+const lbPrev = document.getElementById('lbPrev');
+const lbNext = document.getElementById('lbNext');
 
-        // Клик по фону — закрыть
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
-        });
+let current = 0;
+const visibleItems = () => [...gitems].filter(i => i.style.display !== 'none');
 
-        // Клавиатура
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') showPrev();
-            if (e.key === 'ArrowRight') showNext();
-        });
+gitems.forEach((item, idx) => {
+    item.addEventListener('click', () => {
+        const vis = visibleItems();
+        current = vis.indexOf(item);
+        openLb(vis[current].querySelector('img').src);
+    });
+});
 
-        /* ============================================================
-           ФИЛЬТРЫ ГАЛЕРЕИ
-           ============================================================ */
-        const filterButtons = document.querySelectorAll('.filter-btn');
+function openLb(src) {
+    lbImg.src = src;
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filter = btn.dataset.filter;
+function closeLb() {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+}
 
-                // Активный класс
-                filterButtons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+function navLb(dir) {
+    const vis = visibleItems();
+    current = (current + dir + vis.length) % vis.length;
+    lbImg.src = vis[current].querySelector('img').src;
+}
 
-                // Показ/скрытие карточек
-                galleryItems.forEach(item => {
-                    const category = item.dataset.category;
-                    if (filter === 'all' || category === filter) {
-                        item.style.display = '';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-    </script>
+lbClose.addEventListener('click', closeLb);
+
+lbPrev.addEventListener('click', e => {
+    e.stopPropagation();
+    navLb(-1);
+});
+
+lbNext.addEventListener('click', e => {
+    e.stopPropagation();
+    navLb(1);
+});
+
+// клик по фону закрывает
+lb.addEventListener('click', e => {
+    if (e.target === lb) closeLb();
+});
+
+// клавиатура
+document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') navLb(-1);
+    if (e.key === 'ArrowRight') navLb(1);
+});
+
+// ===== ПЛАВНЫЙ СКРОЛЛ ДЛЯ СТАРЫХ БРАУЗЕРОВ =====
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) {
+            e.preventDefault();
+            t.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+// ===== АНИМАЦИЯ ПОЯВЛЕНИЯ СЕКЦИЙ =====
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+        if (en.isIntersecting) {
+            en.target.style.opacity = '1';
+            en.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('section').forEach(s => {
+    s.style.opacity = '0';
+    s.style.transform = 'translateY(30px)';
+    s.style.transition = 'opacity .6s ease, transform .6s ease';
+    observer.observe(s);
+});
+</script>
 </body>
 </html>
-
