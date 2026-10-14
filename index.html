@@ -425,6 +425,179 @@
             section { padding: 60px 20px; }
             .price-card.featured { transform: scale(1); }
         }
+        /* --- Галерея --- */
+.gallery-filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid #333;
+    padding: 10px 22px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.filter-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.filter-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.gallery-grid {
+    columns: 3;
+    column-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    break-inside: avoid;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #222;
+    transition: 0.3s;
+}
+
+.gallery-item img {
+    width: 100%;
+    display: block;
+    transition: 0.5s;
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 69, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.gallery-item .overlay span {
+    font-size: 40px;
+    color: #fff;
+}
+
+.gallery-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(255, 69, 0, 0.3);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+/* --- Лайтбокс --- */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 40px;
+    backdrop-filter: blur(8px);
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 10px;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 50px var(--accent-glow);
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.lightbox-close:hover {
+    color: var(--accent);
+    transform: rotate(90deg);
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 69, 0, 0.2);
+    border: 1px solid var(--accent);
+    color: #fff;
+    font-size: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.lightbox-nav:hover {
+    background: var(--accent);
+}
+
+.lightbox-prev { left: 30px; }
+.lightbox-next { right: 30px; }
+
+/* Адаптив галереи */
+@media (max-width: 900px) {
+    .gallery-grid { columns: 2; }
+}
+
+@media (max-width: 600px) {
+    .gallery-grid { columns: 1; }
+    .lightbox-nav { width: 45px; height: 45px; font-size: 28px; }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+    .lightbox { padding: 15px; }
+}
     </style>
 </head>
 <body>
@@ -586,6 +759,70 @@
         <p>© 2026 КИБЕР ДОМ. Компьютерный клуб в Петрозаводске. Все права защищены.</p>
         <p style="margin-top: 10px; font-size: 12px; color: #555;">Сделано с любовью к играм.</p>
     </footer>
+  <script>
+      // --- Галерея: фильтры ---
+const filterBtns = document.querySelectorAll('.filter-btn');
+const galleryItems = document.querySelectorAll('.gallery-item');
 
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        galleryItems.forEach(item => {
+            const match = filter === 'all' || item.dataset.category === filter;
+            item.style.display = match ? 'block' : 'none';
+        });
+    });
+});
+
+// --- Лайтбокс ---
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbClose = document.getElementById('lbClose');
+const lbPrev = document.getElementById('lbPrev');
+const lbNext = document.getElementById('lbNext');
+let currentIndex = 0;
+let visibleItems = [];
+
+function openLightbox(index) {
+    visibleItems = Array.from(galleryItems).filter(i => i.style.display !== 'none');
+    currentIndex = index;
+    lbImg.src = visibleItems[currentIndex].querySelector('img').src;
+    lightbox.classList.add('active');
+}
+
+function showImage(index) {
+    if (!visibleItems.length) return;
+    if (index < 0) index = visibleItems.length - 1;
+    if (index >= visibleItems.length) index = 0;
+    currentIndex = index;
+    lbImg.src = visibleItems[currentIndex].querySelector('img').src;
+}
+
+galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const visible = Array.from(galleryItems).filter(i => i.style.display !== 'none');
+        openLightbox(visible.indexOf(item));
+    });
+});
+
+lbClose.addEventListener('click', () => lightbox.classList.remove('active'));
+lbPrev.addEventListener('click', e => { e.stopPropagation(); showImage(currentIndex - 1); });
+lbNext.addEventListener('click', e => { e.stopPropagation(); showImage(currentIndex + 1); });
+
+lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) lightbox.classList.remove('active');
+});
+
+// Управление клавиатурой
+document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') lightbox.classList.remove('active');
+    if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+    if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+});
+  </script>
 </body>
 </html>
