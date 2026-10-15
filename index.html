@@ -158,6 +158,37 @@ section{padding:100px 50px}
 section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 span{font-size:38px}.hero-logo{width:130px;height:130px}}
 .hw-photo{max-width:1100px;margin:40px auto 0;border-radius:16px;overflow:hidden;border:1px solid var(--brd)}
 .hw-photo img{width:100%;height:auto;display:block}
+    .vk-link{
+    margin-top:25px;
+    text-align:center;
+}
+.vk-link a{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 32px;
+    background:linear-gradient(135deg,#0077FF,#0044CC);
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-decoration:none;
+    border-radius:50px;
+    transition:.3s;
+    box-shadow:0 8px 25px rgba(0,119,255,.35);
+}
+.vk-link a:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 35px rgba(0,119,255,.55);
+}
+.vk-icon{
+    background:#fff;
+    color:#0077FF;
+    font-weight:900;
+    font-size:13px;
+    padding:3px 8px;
+    border-radius:6px;
+}
 </style>
 </head>
 <body>
@@ -324,6 +355,11 @@ section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 sp
 <footer>
     <p>© 2026 КИБЕР дом — компьютерный клуб в Петрозаводске</p>
     <p>Лыжная 10а · +7 (911) 054-59-70 · Работаем 24/7</p>
+    <div class="vk-link">
+    <a href="https://vk.ru/kyberdom.petrozavodsk" target="_blank" rel="noopener">
+        <span class="vk-icon">VK</span> Мы во ВКонтакте
+    </a>
+</div>
 </footer>
 <style>
 .filters{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:40px}
