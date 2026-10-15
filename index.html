@@ -24,10 +24,10 @@ nav a:hover::after{width:100%}
 .btn:hover{box-shadow:0 8px 30px var(--acc-glow);transform:translateY(-2px)}
 .btn-o{background:transparent;border:2px solid var(--acc);color:var(--acc2)}
 .btn-o:hover{background:var(--acc);color:#fff}
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 60px;overflow:hidden}
-.hero video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;transform:translate(-50%,-50%);object-fit:cover;z-index:-2}
-.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(10,10,10,.72),rgba(10,10,10,.93));z-index:-1}
-.hero-logo{width:180px;height:180px;object-fit:contain;margin-bottom:15px;filter:drop-shadow(0 0 45px var(--acc-glow));animation:pulse 3s ease-in-out infinite}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 20px 60px;overflow:hidden}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.75));z-index:-1}
+.hero img,.hero h1,.hero p,.hero .hbtns,.hero .badges{position:relative;z-index:1}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 .hero h1{font-size:52px;font-weight:900;text-transform:uppercase;line-height:1.1;letter-spacing:2px}
 .hero h1 span{background:linear-gradient(135deg,var(--acc),var(--acc3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:block;font-size:64px}
@@ -80,11 +80,16 @@ section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 sp
 </header>
 
 <div class="hero">
-    <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600">
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-setup-of-a-gamer-with-a-computer-42777-large.mp4" type="video/mp4">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto"
+           poster="photo1.webp">
+        <source src="video.webm" type="video/webm">
+        <source src="video.mp4" type="video/mp4">
     </video>
+    <div class="hero-overlay"></div>
     <img src="лого.png" alt="КИБЕР дом" class="hero-logo">
-    <h1 style="text-transform:uppercase">Твой идеальный <span style="text-transform:none">КИБЕР дом</span></h1>
+    <h1>Твой идеальный <span>КИБЕР дом</span></h1>
+    <!-- ...остальное без изменений -->
+</div>
     <p>Компьютерный клуб в Петрозаводске. Топовое железо, 240/360 Гц мониторы, PS5 и уютная лаунж-зона. Работаем 24/7.</p>
     <div class="hbtns">
         <a href="#prices" class="btn">Узнать цены</a>
@@ -346,6 +351,11 @@ document.querySelectorAll('.gal .gitem').forEach((it)=>{
         lbIdx=vis.indexOf(it);
         showLb();
     }
+});
+    document.addEventListener('visibilitychange',()=>{
+    const v=document.querySelector('.hero-video');
+    if(!v)return;
+    document.hidden?v.pause():v.play();
 });
 </script>
 </body>
