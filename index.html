@@ -20,8 +20,38 @@ nav a{color:var(--txt);text-decoration:none;margin-left:26px;font-weight:700;fon
 nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--acc2);transition:.3s}
 nav a:hover{color:var(--acc2);opacity:1}
 nav a:hover::after{width:100%}
-.btn{background:linear-gradient(135deg,var(--acc),var(--acc3));color:#fff;padding:13px 28px;border:none;border-radius:6px;font-weight:800;cursor:pointer;text-transform:uppercase;transition:.3s;text-decoration:none;display:inline-block;font-size:14px;letter-spacing:1px}
-.btn:hover{box-shadow:0 8px 30px var(--acc-glow);transform:translateY(-2px)}
+.btn,.btn-out{
+    display:inline-block;
+    padding:15px 38px;
+    border-radius:50px;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    text-decoration:none;
+    cursor:pointer;
+    transition:.3s;
+    border:2px solid transparent;
+}
+.btn{
+    background:linear-gradient(135deg,var(--acc),var(--acc2));
+    color:#fff;
+    box-shadow:0 10px 30px rgba(196,58,10,.4);
+}
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 40px rgba(196,58,10,.6);
+}
+.btn-out{
+    background:transparent;
+    color:#fff;
+    border:2px solid rgba(255,255,255,.35);
+}
+.btn-out:hover{
+    border-color:var(--acc);
+    color:var(--acc2);
+    transform:translateY(-3px);
+}
 .btn-o{background:transparent;border:2px solid var(--acc);color:var(--acc2)}
 .btn-o:hover{background:var(--acc);color:#fff}
 /* === HERO === */
