@@ -24,10 +24,71 @@ nav a:hover::after{width:100%}
 .btn:hover{box-shadow:0 8px 30px var(--acc-glow);transform:translateY(-2px)}
 .btn-o{background:transparent;border:2px solid var(--acc);color:var(--acc2)}
 .btn-o:hover{background:var(--acc);color:#fff}
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 20px 60px;overflow:hidden}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.75));z-index:-1}
-.hero img,.hero h1,.hero p,.hero .hbtns,.hero .badges{position:relative;z-index:1}
+/* === HERO === */
+.hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 20px 60px;
+    overflow:hidden;
+}
+.hero-video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+}
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.8));
+    z-index:-1;
+}
+.hero-logo{
+    width:180px;
+    max-width:40vw;
+    height:auto;
+    margin-bottom:25px;
+    display:block;
+    filter:drop-shadow(0 0 25px rgba(196,58,10,.6));
+}
+.hero h1{
+    font-size:52px;
+    font-weight:900;
+    line-height:1.1;
+    letter-spacing:2px;
+    text-transform:none;
+    margin-bottom:20px;
+}
+.hero h1 span{
+    color:var(--acc2);
+    display:block;
+}
+.hero p{
+    font-size:19px;
+    color:var(--mut);
+    max-width:600px;
+    margin:0 auto 35px;
+}
+.hero .hbtns{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+}
+.hero .badges{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 .hero h1{font-size:52px;font-weight:900;text-transform:uppercase;line-height:1.1;letter-spacing:2px}
 .hero h1 span{background:linear-gradient(135deg,var(--acc),var(--acc3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:block;font-size:64px}
@@ -80,29 +141,26 @@ section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 sp
 </header>
 
 <div class="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto"
-           poster="photo1.webp">
+    <video class="hero-video" autoplay muted loop playsinline poster="photo1.webp">
         <source src="video.webm" type="video/webm">
         <source src="video.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     <img src="лого.png" alt="КИБЕР дом" class="hero-logo">
     <h1>Твой идеальный <span>КИБЕР дом</span></h1>
-    <!-- ...остальное без изменений -->
-</div>
     <p>Компьютерный клуб в Петрозаводске. Топовое железо, 240/360 Гц мониторы, PS5 и уютная лаунж-зона. Работаем 24/7.</p>
     <div class="hbtns">
         <a href="#prices" class="btn">Узнать цены</a>
-        <a href="#contacts" class="btn btn-o">Как добраться</a>
+        <a href="#contacts" class="btn-out">Как добраться</a>
     </div>
     <div class="badges">
         <div class="badge">📍 Лыжная 10а</div>
         <div class="badge">💻 Топовые ПК</div>
         <div class="badge">🎮 PlayStation 5</div>
-        <div class="badge">⏰ 24/7</div>
+        <div class="badge">🎮 24/7</div>
     </div>
 </div>
-
+    
 <section id="hardware">
     <h2 class="st reveal">Наше Железо</h2>
     <div class="hw-row reveal">
