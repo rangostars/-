@@ -189,6 +189,55 @@ section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 sp
     padding:3px 8px;
     border-radius:6px;
 }
+    #music{text-align:center}
+.music-sub{
+    max-width:720px;
+    margin:0 auto 40px;
+    font-size:18px;
+    line-height:1.6;
+    color:var(--mut);
+}
+.music-logo{
+    max-width:280px;
+    margin:0 auto 45px;
+}
+.music-logo img{
+    width:100%;
+    height:auto;
+    display:block;
+    filter:drop-shadow(0 15px 40px rgba(196,58,10,.4));
+}
+.music-platforms{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    justify-content:center;
+    max-width:900px;
+    margin:0 auto;
+}
+.music-pl{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 28px;
+    background:transparent;
+    border:1px solid var(--brd);
+    border-radius:50px;
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    text-decoration:none;
+    transition:.3s;
+}
+.music-pl:hover{
+    border-color:var(--acc);
+    background:rgba(196,58,10,.12);
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(196,58,10,.3);
+}
+.pl-emoji{
+    font-size:16px;
+}
 </style>
 </head>
 <body>
@@ -337,6 +386,39 @@ section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 sp
     </div>
 </section>
 
+    <section id="music">
+    <h2 class="st reveal">Звучит</h2>
+    <p class="music-sub reveal">В нашем клубе играет собственная музыка — атмосферные биты, которые мы пишем сами. Это наша фишка: ни в одном другом клубе Петрозаводска ты её не услышишь.</p>
+
+    <div class="music-logo reveal d1">
+        <img src="music-logo.png" alt="КИБЕР дом Звучит" loading="lazy">
+    </div>
+
+    <div class="music-platforms reveal d2">
+        <a href="https://vk.ru/audios-215784318" target="_blank" rel="noopener" class="music-pl">
+            <span class="pl-emoji">🔵</span> VK Музыка
+        </a>
+        <a href="ССЫЛКА" target="_blank" rel="noopener" class="music-pl">
+            <span class="pl-emoji">🟠</span> Wink Музыка
+        </a>
+        <a href="ССЫЛКА" target="_blank" rel="noopener" class="music-pl">
+            <span class="pl-emoji">🟢</span> Spotify
+        </a>
+        <a href="ССЫЛКА" target="_blank" rel="noopener" class="music-pl">
+            <span class="pl-emoji">🔴</span> YouTube Music
+        </a>
+        <a href="ССЫЛКА" target="_blank" rel="noopener" class="music-pl">
+            <span class="pl-emoji">⚫</span> КИОН Музыка
+        </a>
+        <a href="ССЫЛКА" target="_blank" rel="noopener" class="music-pl">
+            <span class="pl-emoji">🎵</span> Apple Music
+        </a>
+        <a href="ССЫЛКА" target="_blank" rel="noopener" class="music-pl">
+            <span class="pl-emoji">🟡</span> Яндекс Музыка
+        </a>
+    </div>
+</section>
+    
 <section id="contacts">
     <h2 class="st reveal">Контакты</h2>
     <div class="contacts reveal">
