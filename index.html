@@ -162,8 +162,69 @@ section{padding:100px 50px}
 .reveal{opacity:0;transform:translateY(60px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
 .reveal.visible{opacity:1;transform:translate(0,0)}
 .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
-@media(max-width:768px){.photo-strip{grid-template-columns:1fr;height:auto}.photo-strip img{height:220px}header{padding:10px 20px;flex-direction:column}.hw-info{grid-template-columns:1fr 1fr}nav a{font-size:14px;margin-left:12px}
-section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 span{font-size:38px}.hero-logo{width:130px;height:130px}}
+/* Бургер по умолчанию скрыт (десктоп) */
+.burger{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;padding:8px;flex-direction:column;justify-content:space-between;align-items:center;flex-shrink:0}
+.burger span{display:block;width:100%;height:3px;background:#fff;border-radius:2px;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(10px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg)}
+
+.nav-wrap{display:flex;align-items:center;gap:20px}
+
+@media(max-width:768px){
+    /* Шапка: логотип и бургер в одну строку */
+    header{padding:10px 16px;flex-direction:row}
+    header.scrolled{padding:8px 16px}
+    .logo{gap:8px;min-width:0}
+    .logo img{height:44px;width:44px}
+    header.scrolled .logo img{height:38px;width:38px}
+    .logo span{font-size:18px;letter-spacing:1px;white-space:nowrap}
+    .logo span b{font-size:18px}
+
+    /* Показываем бургер */
+    .burger{display:flex}
+
+    /* Выпадающее меню */
+    .nav-wrap{
+        position:fixed;
+        top:0;right:0;
+        width:min(80vw,320px);
+        height:100vh;
+        background:rgba(8,8,8,.98);
+        backdrop-filter:blur(14px);
+        flex-direction:column;
+        align-items:flex-start;
+        justify-content:flex-start;
+        padding:80px 26px 30px;
+        gap:0;
+        border-left:2px solid var(--acc);
+        transform:translateX(100%);
+        transition:transform .35s ease;
+        z-index:999;
+        overflow-y:auto;
+    }
+    .nav-wrap.open{transform:translateX(0)}
+
+    .nav-wrap nav{display:flex;flex-direction:column;width:100%}
+    .nav-wrap nav a{
+        margin:0 0 6px;
+        padding:14px 0;
+        font-size:16px;
+        border-bottom:1px solid var(--brd);
+        width:100%;
+    }
+    .nav-wrap .btn{margin-top:20px;width:100%;text-align:center}
+
+    /* Остальное */
+    .photo-strip{grid-template-columns:1fr;height:auto}
+    .photo-strip img{height:220px}
+    .hw-info{grid-template-columns:1fr 1fr}
+    section{padding:60px 20px}
+    .st{font-size:26px}
+    .hero h1{font-size:32px}
+    .hero h1 span{font-size:38px}
+    .hero-logo{width:130px;height:130px}
+}
 .hw-photo{max-width:1100px;margin:40px auto 0;border-radius:16px;overflow:hidden;border:1px solid var(--brd)}
 .hw-photo img{width:100%;height:auto;display:block}
     .vk-link{
@@ -263,17 +324,25 @@ section{padding:60px 20px}.st{font-size:26px}.hero h1{font-size:32px}.hero h1 sp
 </style>
 </head>
 <body>
+    
 <header id="hdr">
     <a href="#" class="logo"><img src="лого.png" alt="КИБЕР дом"><span><b>КИБЕР</b> дом</span></a>
-    <nav>
-        <a href="#hardware">Железо</a>
-        <a href="#gallery">Галерея</a>
-        <a href="#prices">Цены</a>
-        <a href="#lounge">Лаунж</a>
-        <a href="#music">Звучит</a>
-        <a href="#contacts">Контакты</a>
-    </nav>
-    <a href="tel:+79110545970" class="btn">Забронировать</a>
+
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-wrap" id="navWrap">
+        <nav>
+            <a href="#hardware">Железо</a>
+            <a href="#gallery">Галерея</a>
+            <a href="#prices">Цены</a>
+            <a href="#lounge">Лаунж</a>
+            <a href="#music">Звучит</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+        <a href="tel:+79110545970" class="btn">Забронировать</a>
+    </div>
 </header>
 
 <div class="hero">
@@ -593,6 +662,28 @@ document.querySelectorAll('.gal .gitem').forEach((it)=>{
     if(!v)return;
     document.hidden?v.pause():v.play();
 });
+    // Бургер-меню (мобильная версия)
+const burger = document.getElementById('burger');
+const navWrap = document.getElementById('navWrap');
+
+if(burger && navWrap){
+    burger.addEventListener('click', () => {
+        const isOpen = navWrap.classList.toggle('open');
+        burger.classList.toggle('open', isOpen);
+        burger.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Закрывать меню при клике на ссылку
+    navWrap.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            navWrap.classList.remove('open');
+            burger.classList.remove('open');
+            burger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
+}
 </script>
 </body>
 </html>
